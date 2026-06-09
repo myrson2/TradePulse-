@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Globex Logistics - B2B Procurement & Global Cost Estimator</title>
+  <meta name="description" content="Manage global cost estimation, shipping timelines, and trading regions dynamically with the B2B logistics dashboard.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Hidden checkbox that drives pure CSS theme switching -->
+  <input type="checkbox" id="theme-toggle">
+
+  <div class="app-container">
+    
+    <!-- 1. Header Section -->
+    <header>
+      <div class="brand-section">
+        <div class="logo-icon">G</div>
+        <div class="brand-info">
+          <h1>Globex Logistics</h1>
+          <p>Global Cost Estimator & Procurement Dashboard</p>
+        </div>
+      </div>
+      
+      <!-- Theme Switch Component -->
+      <div class="theme-switch-wrapper">
+        <span class="theme-icon icon-sun">☀️</span>
+        <label class="theme-switch-label" for="theme-toggle">
+          <span class="theme-switch-slider"></span>
+        </label>
+        <span class="theme-icon icon-moon">🌙</span>
+      </div>
+    </header>
+
+    <!-- 2. Main Content Grid -->
+    <div class="content-wrapper">
+      <div class="dashboard-grid">
+        
+        <!-- Left Panel: Intake Form -->
+        <section class="glass-panel" aria-labelledby="intake-form-title">
+          <div class="panel-header">
+            <h2 id="intake-form-title">Procurement Intake</h2>
+            <p>Select target destination and specify cargo details</p>
+          </div>
+
+          <form onsubmit="return false;">
+            <!-- Sourcing Country Selector -->
+            <div class="form-group">
+              <label for="country-selector">Target Sourcing Country</label>
+              <div class="input-wrapper">
+                <span class="input-icon">🌐</span>
+                <select id="country-selector" class="form-control">
+                  <option value="" disabled>Select a destination...</option>
+                  <option value="DE" selected>Germany (Western Europe)</option>
+                  <option value="US">United States (North America)</option>
+                  <option value="PH">Philippines (South-Eastern Asia)</option>
+                  <option value="BR">Brazil (South America)</option>
+                  <option value="JP">Japan (Eastern Asia)</option>
+                </select>
+                <span class="select-arrow">▼</span>
+              </div>
+            </div>
+
+            <!-- Cargo Weight Input -->
+            <div class="form-group">
+              <label for="cargo-weight">Cargo Weight (kg)</label>
+              <div class="input-wrapper">
+                <span class="input-icon">⚖️</span>
+                <input type="number" id="cargo-weight" class="form-control" placeholder="Enter cargo weight..." value="1250" min="1">
+              </div>
+            </div>
+
+            <!-- Static Action Button (Mock action, logic omitted) -->
+            <button class="btn-submit-mock" type="button">
+              Calculate Cost Overhead
+            </button>
+          </form>
+        </section>
+
+        <!-- Right Panel: Operational Overview Panel -->
+        <section class="glass-panel" aria-labelledby="overview-panel-title">
+          <div class="panel-header">
+            <h2 id="overview-panel-title">Operational Overview</h2>
+            <p>Calculated live logistics parameters for selected region</p>
+          </div>
+
+          <div class="metrics-grid">
+            
+            <!-- Card 1: Currency -->
+            <div class="metric-card">
+              <div class="metric-header">
+                <span class="metric-label">Primary Currency</span>
+                <div class="metric-icon-wrap">💵</div>
+              </div>
+              <div class="metric-value">EUR (€)</div>
+              <div class="metric-subtext">Official currency of Germany (Eurozone)</div>
+            </div>
+
+            <!-- Card 2: Shipping Route & Timeline -->
+            <div class="metric-card">
+              <div class="metric-header">
+                <span class="metric-label">Shipping Timeline</span>
+                <div class="metric-icon-wrap">🚢</div>
+              </div>
+              <div class="metric-value">Express Route</div>
+              <div class="metric-subtext">Estimated: 3-5 Business Days (Western Europe Hub)</div>
+            </div>
+
+            <!-- Card 3: Dialing Prefix -->
+            <div class="metric-card">
+              <div class="metric-header">
+                <span class="metric-label">Manifest Phone Prefix</span>
+                <div class="metric-icon-wrap">📞</div>
+              </div>
+              <div class="metric-value">+49</div>
+              <div class="metric-subtext">Required prefix for commercial delivery documentation</div>
+            </div>
+
+            <!-- Card 4: Independent Trade Status -->
+            <div class="metric-card">
+              <div class="metric-header">
+                <span class="metric-label">Independent Border Status</span>
+                <div class="metric-icon-wrap">🛡️</div>
+              </div>
+              <div class="metric-value" style="margin-bottom: 0.25rem;">
+                <span class="badge badge-sovereign">✅ Sovereign Trade Zone</span>
+              </div>
+              <div class="metric-subtext">Clear of dependent territory customs clearances</div>
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+
+      <!-- 3. Global Status Stream (Mock Console Interface) -->
+      <section class="console-panel" aria-label="System Status Console">
+        <div class="console-header">
+          <div class="console-title">
+            <div class="console-indicator"></div>
+            <span>Global Status Stream</span>
+          </div>
+          <div class="console-dots">
+            <div class="console-dot"></div>
+            <div class="console-dot"></div>
+            <div class="console-dot"></div>
+          </div>
+        </div>
+        <div class="console-body">
+          <div class="console-log-line">
+            <span class="console-timestamp">[23:44:01]</span>
+            <span class="console-prefix-sys">[System Status]</span>
+            <span class="console-msg">Connected to Global API. 250 countries successfully mapped.</span>
+          </div>
+          <div class="console-log-line">
+            <span class="console-timestamp">[23:44:05]</span>
+            <span class="console-prefix-sys">[System Status]</span>
+            <span class="console-msg">Caching region operational parameters in local memory...</span>
+          </div>
+          <div class="console-log-line">
+            <span class="console-timestamp">[23:44:10]</span>
+            <span class="console-prefix-user">[User Action]</span>
+            <span class="console-msg">Recalculating data values for Germany.</span>
+          </div>
+          <div class="console-log-line">
+            <span class="console-timestamp">[23:44:11]</span>
+            <span class="console-prefix-sys">[System Status]</span>
+            <span class="console-msg">Calculations complete. Updated 4 visual interface cards.</span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+</body>
+</html>
