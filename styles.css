@@ -369,6 +369,10 @@ select.form-control {
   cursor: pointer;
 }
 
+#country-selector option {
+  background-color: #0f172a;
+}
+
 .select-arrow {
   position: absolute;
   right: 1.25rem;
@@ -643,4 +647,19 @@ select.form-control {
 
 .console-msg {
   color: var(--text-title);
+}
+
+/* Inline Error Alert Component */
+.error-alert {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }

@@ -52,12 +52,7 @@
               <div class="input-wrapper">
                 <span class="input-icon">🌐</span>
                 <select id="country-selector" class="form-control">
-                  <option value="" disabled>Select a destination...</option>
-                  <option value="DE" selected>Germany (Western Europe)</option>
-                  <option value="US">United States (North America)</option>
-                  <option value="PH">Philippines (South-Eastern Asia)</option>
-                  <option value="BR">Brazil (South America)</option>
-                  <option value="JP">Japan (Eastern Asia)</option>
+                  <option value="" disabled>Select a destination...</option>                
                 </select>
                 <span class="select-arrow">▼</span>
               </div>
@@ -94,8 +89,8 @@
                 <span class="metric-label">Primary Currency</span>
                 <div class="metric-icon-wrap">💵</div>
               </div>
-              <div class="metric-value">EUR (€)</div>
-              <div class="metric-subtext">Official currency of Germany (Eurozone)</div>
+              <div class="metric-value" id="currency-value">-</div>
+              <div class="metric-subtext" id="currency-subtext">Select a destination...</div>
             </div>
 
             <!-- Card 2: Shipping Route & Timeline -->
@@ -104,8 +99,8 @@
                 <span class="metric-label">Shipping Timeline</span>
                 <div class="metric-icon-wrap">🚢</div>
               </div>
-              <div class="metric-value">Express Route</div>
-              <div class="metric-subtext">Estimated: 3-5 Business Days (Western Europe Hub)</div>
+              <div class="metric-value" id="shipping-value">-</div>
+              <div class="metric-subtext" id="shipping-subtext">Select a destination...</div>
             </div>
 
             <!-- Card 3: Dialing Prefix -->
@@ -114,8 +109,8 @@
                 <span class="metric-label">Manifest Phone Prefix</span>
                 <div class="metric-icon-wrap">📞</div>
               </div>
-              <div class="metric-value">+49</div>
-              <div class="metric-subtext">Required prefix for commercial delivery documentation</div>
+              <div class="metric-value" id="dialing-value">-</div>
+              <div class="metric-subtext" id="dialing-subtext">Select a destination...</div>
             </div>
 
             <!-- Card 4: Independent Trade Status -->
@@ -124,10 +119,10 @@
                 <span class="metric-label">Independent Border Status</span>
                 <div class="metric-icon-wrap">🛡️</div>
               </div>
-              <div class="metric-value" style="margin-bottom: 0.25rem;">
-                <span class="badge badge-sovereign">✅ Sovereign Trade Zone</span>
+              <div class="metric-value" id="status-value" style="margin-bottom: 0.25rem;">
+                -
               </div>
-              <div class="metric-subtext">Clear of dependent territory customs clearances</div>
+              <div class="metric-subtext" id="status-subtext">Select a destination...</div>
             </div>
 
           </div>
@@ -148,7 +143,7 @@
             <div class="console-dot"></div>
           </div>
         </div>
-        <div class="console-body">
+        <div class="console-body" id="console-body">
           <div class="console-log-line">
             <span class="console-timestamp">[23:44:01]</span>
             <span class="console-prefix-sys">[System Status]</span>
@@ -175,5 +170,6 @@
     </div>
   </div>
 
+  <script src="app.js"></script>
 </body>
 </html>
