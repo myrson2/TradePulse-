@@ -1,3 +1,6 @@
+import { countries as c} from "./countries.js"
+
+console.log(c);
 // Theme Mode (Dark/Light Mode) 
 
 document.querySelector('.theme-switch-wrapper').addEventListener('click', e => {
@@ -27,13 +30,13 @@ const countries = async () => {
 }
 
 countries().then(data => {
-   console.log(data);
+   console.log(data)
    const country_selector = document.getElementById('country-selector')
    
    /* It sorts the countries alphabetically */
    const sortedCountries = data.sort((a, b) => {
       return a.name.common.localeCompare(b.name.common);
-   });
+   })
    
    sortedCountries.forEach(country => {
       const option = document.createElement('option')
@@ -42,8 +45,8 @@ countries().then(data => {
       option.setAttribute('value', country.cca2)
 
       country_selector.appendChild(option)
-   });
-});
+   })
+})
 
 // When clicked return the country 
 document.querySelector('.btn-submit-mock').addEventListener('click', async (e) => {
