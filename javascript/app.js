@@ -1,63 +1,75 @@
-import { countries as c} from "./countries.js"
-
-console.log(c);
+import { countries, countries as country} from "./countries.js"
+import { storeCountries } from "./countries.js"
 // Theme Mode (Dark/Light Mode) 
 
 document.querySelector('.theme-switch-wrapper').addEventListener('click', e => {
    document.querySelector('.app-container').classList.toggle('theme-toggle')
 })
 
-// target sourcing country feature 
-/*
-1. fetch all the name of the country / 
-2. Render it all through dom in select options /
-3. It must return the object country when click the calculate cost overhead
-*/
+/* Initialize the countries */
+const init = async () => {
+   await storeCountries()
+   return country
+} 
+/* This call dynamically sorting the countries alphabetically then appending the options (country) in select */
 
-/* Fetch all the name of the country */
-const countries = async () => {
+const display_options = async () => {
    try {
-      const url = 'https://restcountries.com/v3.1/all?fields=name,cca2'
-      const response = await fetch(url);
+      console.log('Connected to Api!');
+      const countries = await init()
+      if(!countries) throw new Error('Failed to Connect to Api')
+      console.log(countries)
 
-      if (!response.ok) throw new Error(`Server returned error status: ${response.status}`)
+      const country_selector = document.getElementById('country-selector')
+      
+      const sortedCountries = Object.values(countries).sort((a, b) => {
+         return a.name.common.localeCompare(b.name.common);
+      })
 
-      const getResponse = await response.json()
-      return getResponse
+      sortedCountries.forEach(country => {
+         const option = document.createElement('option')
+
+         option.innerText = country.name.common
+         option.setAttribute('value', country.cca2)
+
+         country_selector.appendChild(option)
+      })
    } catch (error) {
-      console.error("Fetch intercepted an error:", error.message)
+      console.log(error);
    }
 }
 
-countries().then(data => {
-   console.log(data)
-   const country_selector = document.getElementById('country-selector')
-   
-   /* It sorts the countries alphabetically */
-   const sortedCountries = data.sort((a, b) => {
-      return a.name.common.localeCompare(b.name.common);
-   })
-   
-   sortedCountries.forEach(country => {
-      const option = document.createElement('option')
-
-      option.innerText = country.name.common
-      option.setAttribute('value', country.cca2)
-
-      country_selector.appendChild(option)
-   })
+ document.querySelector('.btn-submit-mock').addEventListener('click', async (e) => {
+   try {
+      const country = await getCountry()
+      console.log(country);
+      
+      console.log(country_details(country));
+      console.log(`Fetch the ${country.name.common}!`);
+   } catch (error) {
+      console.error("Fetch intercepted an error:", error.message)
+   }
 })
 
-// When clicked return the country 
-document.querySelector('.btn-submit-mock').addEventListener('click', async (e) => {
-  try {
+const getCountry = async () => {
+   const countries = await init()
+   if(!countries) throw new Error('Failed to Connect to Api')
    const country_code = document.getElementById('country-selector').value
+   console.log(country_code);
 
-   const response = await fetch(`https://restcountries.com/v3.1/alpha/${country_code}`)
-   const countryData = await response.json();
+   // get countries through bracket notation
+   const country = countries[country_code]
+   return country
+}
 
-   console.log(countryData);
-  } catch (error) {
-   console.error("Fetch intercepted an error:", error.message)
-  }
-})
+const country_details = (country) => {
+   return {
+      name              : country.name.common,
+      currency          : Object.keys(country.currencies)[0],
+      isIndependent     : country.independent,
+   }
+}
+
+setTimeout(() => {
+   display_options()
+}, 2000)

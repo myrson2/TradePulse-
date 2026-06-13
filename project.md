@@ -49,8 +49,8 @@ Your `index.html` panel workspace must display three structural elements side-by
 ---
 
 ## 5. Development Milestones
-- [ ] **Milestone 1:** Build the static `index.html` structure shell and CSS dashboard layouts with static placeholder cards.
-- [ ] **Milestone 2:** Implement the basic asynchronous `fetch()` architecture script file to pull down arrays successfully into the developer console logs.
-- [ ] **Milestone 3:** Wire up the UI selector element to generate option tags dynamically from the array fields.
-- [ ] **Milestone 4:** Apply the custom conditional business rule strings and calculate the outputs straight to the DOM window elements.
-- [ ] **Milestone 5:** Refine the error handlers by intentionally misconfiguring the URL string to verify that your layout handles server down-times gracefully.
+- [x] **Milestone 1:** Build the static `index.html` structure shell and CSS dashboard layouts with static placeholder cards.
+- [x] **Milestone 2:** Implement the basic asynchronous `fetch()` architecture script file to pull down arrays successfully into the developer console logs.
+- [x] **Milestone 3:** Wire up the UI selector element to generate option tags dynamically from the array fields.
+- [x] **Milestone 4:** Apply the custom conditional business rule strings and calculate the outputs straight to the DOM window elements.
+- [x] **Milestone 5:** Refine the error handlers by intentionally misconfiguring the URL string to verify that your layout handles server down-times gracefully.
